@@ -1,1 +1,58 @@
-<p>user-profile-edit works!</p>
+<div>
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="profile-form">
+  <div class="profile-picture-wrapper">
+    <label for="profilePicture">
+      <img [src]="previewUrl()" alt="Profile Picture" class="profile-picture">
+      <div class="upload-overlay">Change Picture</div>
+    </label>
+    <input
+      style="display: none"
+      type="file"
+      id="profilePicture"
+      accept="image/*"
+      (change)="onFileSelected($event)"
+      class="hidden"
+    >
+  </div>
+
+  <mat-form-field appearance="fill">
+    <mat-label>First Name</mat-label>
+    <input matInput formControlName="firstName">
+    <mat-error *ngIf="getErrorMessage('firstName')">First name is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Last Name</mat-label>
+    <input matInput formControlName="lastName">
+    <mat-error *ngIf="getErrorMessage('lastName')">Last name is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email" type="email">
+    <mat-error *ngIf="getErrorMessage('email')">Please enter a valid email address</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Phone Number</mat-label>
+    <input matInput formControlName="phone" type="tel">
+    <mat-error *ngIf="getErrorMessage('phone')">Please enter a valid phone number</mat-error>
+  </mat-form-field>
+
+  <div class="button-group">
+    <button mat-button color="warn" type="button" (click)="onCancel()">Cancel</button>
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="!profileForm.valid || isSubmitting() || isLoading()">
+      <div class="spinner-container" *ngIf="isSubmitting()">
+        <mat-spinner [diameter]="20"></mat-spinner>
+        <span>Saving...</span>
+      </div>
+      <span *ngIf="!isSubmitting()">Save Changes</span>
+    </button>
+  </div>
+
+</form>
+</div>
