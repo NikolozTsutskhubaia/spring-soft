@@ -1,27 +1,135 @@
-# SpringSoft
+# Spring Soft Application
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.11.
+This is an Angular-based web application that provides user profile management functionality. The application uses JSON Server to mock the backend API for development purposes.
 
-## Development server
+## Prerequisites
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Before running the application, make sure you have the following installed:
+- Node.js (Latest LTS version recommended)
+- npm (Node Package Manager)
+- Angular CLI (v18.2.x)
 
-## Code scaffolding
+## Installation
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. Clone the repository:
+```bash
+git clone [repository-url]
+cd spring-soft
+```
 
-## Build
+2. Install dependencies:
+```bash
+npm install
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Running the Application
 
-## Running unit tests
+You have several options to run the application:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Development Mode with Mock API
 
-## Running end-to-end tests
+To run the application with the mock API server:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```bash
+npm run dev
+```
 
-## Further help
+This command will:
+- Start the Angular development server on `http://localhost:4200`
+- Start the JSON Server mock API on `http://localhost:3000`
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### Development Mode (Frontend Only)
+
+To run only the Angular development server:
+
+```bash
+npm start
+```
+
+The application will be available at `http://localhost:4200`
+
+### Mock API Server Only
+
+To run only the mock API server:
+
+```bash
+npm run mock:server
+```
+
+The mock API will be available at `http://localhost:3000`
+
+## Testing
+
+### Running Unit Tests
+
+To execute the unit tests:
+
+```bash
+npm test
+```
+
+This will:
+- Launch Karma test runner
+- Execute all test cases
+- Generate coverage reports
+
+To run tests in watch mode (for development):
+
+```bash
+npm test -- --watch
+```
+
+### Test Coverage
+
+Coverage reports are generated automatically when running tests. You can find them in:
+```
+/coverage/spring-soft/index.html
+```
+
+## Building for Production
+
+To create a production build:
+
+```bash
+npm run build
+```
+
+The build artifacts will be stored in the `dist/` directory.
+
+## Available Scripts
+
+- `npm start` - Starts the development server
+- `npm run build` - Builds the application for production
+- `npm test` - Executes unit tests
+- `npm run mock:server` - Starts the mock API server
+- `npm run dev` - Runs both the development server and mock API
+- `npm run watch` - Builds the application in watch mode
+
+## Dependencies
+
+- Angular v18.2.0
+- Angular Material v18.2.11
+- RxJS v7.8.0
+- JSON Server (for mock API)
+- Jasmine/Karma (for testing)
+
+## Browser Support
+
+The application supports the following browsers:
+- Chrome (latest)
+- Firefox (latest)
+- Edge (latest)
+- Safari (latest)
+
+## Troubleshooting
+
+### Common Issues
+
+1. **Port Conflicts**
+   - If port 4200 is in use, Angular will automatically try to use the next available port
+   - If port 3000 is in use, you can modify the mock server port in the `package.json` file
+
+2. **Mock API Connection Issues**
+   - Ensure the mock server is running (`npm run mock:server`)
+   - Check that the API URL in the environment files matches the mock server port
+
