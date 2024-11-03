@@ -1,0 +1,155 @@
+$primary-color: #1e3751;
+$primary-hover: #1e3751;
+$text-primary: #1f2937;
+$text-secondary: #4b5563;
+$background-light: #f9fafb;
+$border-radius: 12px;
+$shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+$transition: all 0.2s ease-in-out;
+
+.profile-display {
+  position: relative;
+  max-width: 600px;
+  margin: 2.5rem auto;
+  padding: 2rem;
+  background: white;
+  border-radius: $border-radius;
+  box-shadow: $shadow-md, 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+
+  .edit {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: white;
+    color: $primary-color;
+    border: 1px solid rgba($primary-color, 0.2);
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: $transition;
+
+    svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      transition: $transition;
+    }
+
+    &:hover {
+      background-color: $primary-color;
+      color: white;
+      border-color: $primary-color;
+      transform: translateY(-1px);
+      box-shadow: $shadow-sm;
+
+      svg {
+        transform: scale(1.1);
+      }
+    }
+
+    &:active {
+      transform: translateY(0);
+      box-shadow: none;
+    }
+  }
+
+  .profile-picture-wrapper {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 2rem;
+    border-radius: 50%;
+    box-shadow: $shadow-sm;
+    background: $background-light;
+    overflow: hidden;
+
+    .profile-picture {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+  }
+
+  .profile-info {
+    display: grid;
+    gap: 1.5rem;
+
+    .info-group {
+      display: grid;
+      gap: 0.5rem;
+      padding: 1rem;
+      background: $background-light;
+      border-radius: $border-radius;
+      transition: background-color 0.2s ease;
+
+      &:hover {
+        background: darken($background-light, 2%);
+      }
+
+      .label {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: $text-secondary;
+        text-transform: uppercase;
+        letter-spacing: 0.025em;
+      }
+
+      .value {
+        font-size: 1.125rem;
+        color: $text-primary;
+        font-weight: 500;
+
+        &:empty::before {
+          content: "—";
+          color: #9ca3af;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 640px) {
+    margin: 1rem;
+    padding: 1.5rem;
+
+    .edit {
+      top: 1rem;
+      right: 1rem;
+      padding: 0.375rem 0.75rem;
+      font-size: 0.75rem;
+
+      svg {
+        width: 14px;
+        height: 14px;
+      }
+    }
+
+    .profile-picture-wrapper {
+      width: 140px;
+      height: 140px;
+      margin-bottom: 1.5rem;
+    }
+
+    .profile-info {
+      gap: 1rem;
+
+      .info-group {
+        padding: 0.875rem;
+
+        .label {
+          font-size: 0.75rem;
+        }
+
+        .value {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}
